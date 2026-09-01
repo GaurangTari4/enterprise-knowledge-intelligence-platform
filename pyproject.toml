@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-knowledge-intelligence-platform"
+version = "0.1.0"
+description = "Enterprise Knowledge Intelligence Platform with hybrid search, citations, guardrails, and evaluation"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Codex" }]
+dependencies = [
+    "pymupdf>=1.28.2",
+    "python-docx>=1.2.0",
+    "sentence-transformers>=6.0.0",
+    "qdrant-client>=1.19.0",
+]
+
+[project.optional-dependencies]
+web = ["fastapi>=0.115", "uvicorn>=0.30", "pydantic>=2.0"]
+
+[project.scripts]
+production-rag = "production_rag.__main__:main"
+enterprise-knowledge = "production_rag.__main__:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["production_rag*"]
